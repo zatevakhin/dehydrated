@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "dehydrated"
+version = "0.1.1"
+description = "Wrapper for 'thc-hydra' bruteforce tool"
+authors = ["Ivan Zatevakhin"]
+keywords = ["thc-hydra", "bruteforce", "wrapper"]
+homepage = "https://github.com/zatevakhin/dehydrated"
+documentation = "https://github.com/zatevakhin/dehydrated"
+readme = "README.md"
+license = "Apache-2.0"
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+
+
+[tool.poetry.dev-dependencies]
+isort = { version = "<5.10.2,>=5.3.2" }
+black = { version = "22.3.0" }
+pytest = { version = "^7.2.0" }
+
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 120
+
+
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
