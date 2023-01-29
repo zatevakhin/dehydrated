@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dehydrated"
-version = "0.1.1"
+version = "0.1.0"
 description = "Wrapper for 'thc-hydra' bruteforce tool"
 authors = ["Ivan Zatevakhin"]
 keywords = ["thc-hydra", "bruteforce", "wrapper"]
