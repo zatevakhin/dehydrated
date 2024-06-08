@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dehydrated"
-version = "0.1.0"
+version = "0.1.1"
 description = "Wrapper for 'thc-hydra' bruteforce tool"
 authors = ["Ivan Zatevakhin"]
 keywords = ["thc-hydra", "bruteforce", "wrapper"]
@@ -12,6 +12,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
+pydantic = { version = "^2.4.2" }
 
 
 [tool.poetry.dev-dependencies]
