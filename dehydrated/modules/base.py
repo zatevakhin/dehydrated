@@ -1,36 +1,19 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel, Field
+from typing import List
 from ..as_file import as_file
 
 
-@dataclass
-class HydraBaseSettings:
-    target: str = field(default=None)
-    service_port: int = field(default=None)
+class HydraBaseSettings(BaseModel):
+    target: str = Field(default=None)
+    service_port: int = Field(default=None)
+    logins: List[str] = Field(default_factory=list)
+    passwords: List[str] = Field(default_factory=list)
 
     @property
     def args(self):
-        args = [self.target]
+        args = [self.target, "-L", as_file(self.logins), "-P", as_file(self.passwords)]
 
         if self.service_port is not None:
             args.extend(["-s", str(self.service_port)])
+
         return args
-
-
-@dataclass
-class HydraShotSettings(HydraBaseSettings):
-    login: str = field(default=None)
-    password: str = field(default=None)
-
-    @property
-    def args(self):
-        return [*super().args, "-l", self.login, "-p", self.password]
-
-
-@dataclass
-class HydraBurstSettings(HydraBaseSettings):
-    logins: list[str] = field(default=None)
-    passwords: list[str] = field(default=None)
-
-    @property
-    def args(self):
-        return [*super().args, "-L", as_file(self.logins), "-P", as_file(self.passwords)]
